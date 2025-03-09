@@ -1,6 +1,7 @@
+import 'package:WeathFul/Providers/CityProvider.dart';
+import 'package:WeathFul/WeatherScreen/Screens/WeatherScreen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_learn/Providers/CityProvider.dart';
-import 'package:flutter_learn/WeatherScreen/Screens/WeatherScreen.dart';
+
 import 'package:provider/provider.dart';
 
 void main() => runApp(ChangeNotifierProvider(

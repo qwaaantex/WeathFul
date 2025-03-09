@@ -1,8 +1,9 @@
+import 'package:WeathFul/MainWidgets/Widgets/Drawer.dart';
+import 'package:WeathFul/Providers/CityProvider.dart';
+import 'package:WeathFul/WeatherScreen/Screens/WeatherScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_appbar/flutter_appbar.dart';
-import 'package:flutter_learn/MainWidgets/Widgets/Drawer.dart';
-import 'package:flutter_learn/Providers/CityProvider.dart';
-import 'package:flutter_learn/WeatherScreen/Screens/WeatherScreen.dart';
+
 import 'package:icons_plus/icons_plus.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_appbar/components/appbar.dart' as CustomAppBar;

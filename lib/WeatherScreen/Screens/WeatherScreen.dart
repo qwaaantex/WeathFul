@@ -1,10 +1,11 @@
+import 'package:WeathFul/MainWidgets/Widgets/Drawer.dart';
+import 'package:WeathFul/NotificationsScreen/NotificationsScreen.dart';
+import 'package:WeathFul/Providers/CityProvider.dart';
+import 'package:WeathFul/TownsScreen/Screens/TownsScreen.dart';
+import 'package:WeathFul/WeatherScreen/Screens/WeatherScreenMain.dart';
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_learn/MainWidgets/Widgets/Drawer.dart';
-import 'package:flutter_learn/NotificationsScreen/NotificationsScreen.dart';
-import 'package:flutter_learn/Providers/CityProvider.dart';
-import 'package:flutter_learn/TownsScreen/Screens/TownsScreen.dart';
-import 'package:flutter_learn/WeatherScreen/Screens/WeatherScreenMain.dart';
+
 import 'package:icons_plus/icons_plus.dart';
 import 'package:provider/provider.dart';
 

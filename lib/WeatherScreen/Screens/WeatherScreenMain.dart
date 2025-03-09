@@ -1,12 +1,13 @@
+import 'package:WeathFul/MainWidgets/Widgets/Drawer.dart';
+import 'package:WeathFul/Providers/CityProvider.dart';
+import 'package:WeathFul/WeatherScreen/Widgets/Day.dart';
+import 'package:WeathFul/WeatherScreen/Widgets/Name.dart';
+import 'package:WeathFul/WeatherScreen/Widgets/Temperature.dart';
+import 'package:WeathFul/WeatherScreen/Widgets/TemperatureFiveDays.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_appbar/components/appbar_behavior.dart';
 import 'package:flutter_appbar/widgets/appbar_connection.dart';
-import 'package:flutter_learn/MainWidgets/Widgets/Drawer.dart';
-import 'package:flutter_learn/Providers/CityProvider.dart';
-import 'package:flutter_learn/WeatherScreen/Widgets/Day.dart';
-import 'package:flutter_learn/WeatherScreen/Widgets/Name.dart';
-import 'package:flutter_learn/WeatherScreen/Widgets/Temperature.dart';
-import 'package:flutter_learn/WeatherScreen/Widgets/TemperatureFiveDays.dart';
+
 import 'package:icons_plus/icons_plus.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_appbar/components/appbar.dart' as CustomAppBar;
