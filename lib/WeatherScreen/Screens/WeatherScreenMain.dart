@@ -27,7 +27,7 @@ class WeatherScreenState extends State<WeatherScreenMain> {
     String cityName = cityProvider.cityName;
     return Scaffold(
         key: scaffoldKey,
-        drawer: const DrawerPage(),
+        endDrawer: const DrawerPage(),
         body: SafeArea(
             child: AppBarConnection(
           appBars: [
@@ -35,36 +35,50 @@ class WeatherScreenState extends State<WeatherScreenMain> {
               behavior: const MaterialAppBarBehavior(floating: true),
               body: Container(
                   height: 55,
-                  color: Colors.purple.shade500,
-                  alignment: Alignment.center,
+                  color: Colors.grey[900],
                   child: Stack(children: [
                     Align(
-                        alignment: Alignment.centerLeft,
+                        alignment: Alignment.centerRight,
                         child: IconButton(
                             onPressed: () {
-                              scaffoldKey.currentState?.openDrawer();
+                              scaffoldKey.currentState?.openEndDrawer();
                             },
                             icon: const Icon(
-                              BoxIcons.bx_menu_alt_left,
+                              BoxIcons.bx_menu_alt_right,
                               size: 25,
                               color: Colors.white,
                             ))),
-                    const Center(
-                        child: Text(
-                      "WeathFul",
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 20,
-                          fontFamily: 'RobotoMono'),
-                    )),
+                    Row(
+                      children: [
+                        const SizedBox(
+                          width: 10,
+                        ),
+                        Image.asset(
+                          "assets/images/Logo.png",
+                          scale: 12,
+                        ),
+                        const SizedBox(
+                          width: 10,
+                        ),
+                        const Align(
+                            alignment: Alignment.centerLeft,
+                            child: Text(
+                              "WeathFul",
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 20,
+                                  fontFamily: 'RobotoMono'),
+                            )),
+                      ],
+                    )
                   ])),
             )
           ],
           child: Stack(children: [
             Container(
-              decoration: const BoxDecoration(
-                  gradient: LinearGradient(
-                      colors: [Colors.purpleAccent, Colors.deepPurple])),
+              decoration: BoxDecoration(
+                color: Colors.grey[850],
+              ),
               width: MediaQuery.of(context).size.width,
               height: MediaQuery.of(context).size.height,
             ),

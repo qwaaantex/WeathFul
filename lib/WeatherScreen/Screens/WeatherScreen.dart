@@ -1,5 +1,4 @@
 import 'package:WeathFul/MainWidgets/Widgets/Drawer.dart';
-import 'package:WeathFul/NotificationsScreen/NotificationsScreen.dart';
 import 'package:WeathFul/Providers/CityProvider.dart';
 import 'package:WeathFul/TownsScreen/Screens/TownsScreen.dart';
 import 'package:WeathFul/WeatherScreen/Screens/WeatherScreenMain.dart';
@@ -33,22 +32,19 @@ class WeatherAppScreenState extends State<WeatherAppScreen> {
     String cityName = cityProvider.cityName;
     return Scaffold(
         key: scaffoldKey,
-        backgroundColor: Colors.purple.shade500,
-        drawer: const DrawerPage(),
+        backgroundColor: Colors.grey.withOpacity(0.2),
+        endDrawer: const DrawerPage(),
         bottomNavigationBar: ConvexAppBar(
-          gradient: const LinearGradient(
-              colors: [Colors.purpleAccent, Colors.deepPurple]),
           height: 60,
-          color: Colors.white,
-          backgroundColor: Colors.purple,
-          activeColor: Colors.white,
+          color: Colors.grey,
+          backgroundColor: Colors.grey[900],
+          activeColor: Colors.grey[600],
           items: const [
             TabItem(icon: Bootstrap.sun, title: 'Погода'),
             TabItem(
               icon: BoxIcons.bx_building_house,
               title: 'Города',
             ),
-            TabItem(icon: Icons.notifications_active, title: 'Уведомления'),
           ],
           onTap: (i) {
             setState(() {
@@ -62,7 +58,6 @@ class WeatherAppScreenState extends State<WeatherAppScreen> {
             TownScreenApp(
               cityName: cityName,
             ),
-            const NotificationsScreen(),
           ]),
         ));
   }

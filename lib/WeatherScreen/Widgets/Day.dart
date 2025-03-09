@@ -33,7 +33,7 @@ class DayState extends State<Day> {
                 border: Border.all(color: Colors.grey)),
             child: Text(
               dayOfWeek(),
-              style: const TextStyle(fontSize: 40, color: Colors.white),
+              style: const TextStyle(fontSize: 30, color: Colors.white),
             )));
   }
 }

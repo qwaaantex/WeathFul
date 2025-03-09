@@ -25,7 +25,7 @@ class TemperatureState extends State<Temperature> {
         await dotenv.load(fileName: "key.env");
 
         final apiKey = dotenv.env['api-key'];
-        wf = WeatherFactory(apiKey!, language: Language.RUSSIAN);
+        wf = WeatherFactory(apiKey!, language: Language.ENGLISH);
         temp = await wf.currentWeatherByCityName(widget.nameCity);
         weather = await wf.currentWeatherByCityName(widget.nameCity);
 
@@ -51,13 +51,16 @@ class TemperatureState extends State<Temperature> {
                 textAlign: TextAlign.center,
                 style: const TextStyle(color: Colors.white, fontSize: 20),
               )
-            : Column(children: [
-                const SizedBox(
+            : const Column(children: [
+                SizedBox(
                   height: 10,
                 ),
                 CircularProgressIndicator(
-                  color: Colors.purple.shade500,
-                )
+                  color: Colors.grey,
+                ),
+                SizedBox(
+                  height: 10,
+                ),
               ])
       ],
     );

@@ -38,6 +38,7 @@ dev_dependencies:
 flutter:
   assets: 
   - key.env
+  - assets/images/Logo.png
 
   uses-material-design: true
 

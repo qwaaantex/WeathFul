@@ -14,376 +14,186 @@ class DrawerState extends State<DrawerPage> {
   Widget build(BuildContext context) {
     return Drawer(
         shape: const RoundedRectangleBorder(),
-        backgroundColor: Colors.purple,
+        backgroundColor: Colors.grey[850],
         child: ListView(children: [
           Container(
-              width: 100,
-              height: 100,
-              alignment: Alignment.topCenter,
-              child: const Align(
-                alignment: Alignment.center,
-                child: Text(
-                  "WeathFul",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                      fontFamily: 'RobotoMono',
-                      color: Colors.white,
-                      fontSize: 30),
-                ),
-              )),
-          const Text(
-            "ИНФОРМАЦИЯ",
-            textAlign: TextAlign.center,
-            style: TextStyle(color: Colors.white60, fontSize: 15),
-          ),
-          Card(
-              // ignore: deprecated_member_use
-              color: Colors.purple.withOpacity(0.5),
-              margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
-              child: ExpansionTile(
-                leading: const Icon(
-                  BoxIcons.bx_list_check,
-                  size: 25,
-                ),
-                trailing: Icon(
-                  isOpenedHelped ? Icons.arrow_drop_up : Icons.arrow_drop_down,
-                  size: 25,
-                ),
-                onExpansionChanged: (changed) {
-                  setState(() {
-                    isOpenedHelped = !isOpenedHelped;
-                  });
-                },
-                collapsedShape: const RoundedRectangleBorder(
-                  side: BorderSide(color: Colors.transparent),
-                ),
-                shape: const RoundedRectangleBorder(
-                  side: BorderSide(color: Colors.transparent),
-                ),
-                title: const Text(
-                  "О приложении",
-                  style: TextStyle(color: Colors.white),
-                ),
-                children: [
-                  Card(
-                    color: Colors.purple.shade600,
-                    child: SizedBox(
-                        width: MediaQuery.of(context).size.width * 0.5,
-                        child: const Text(
-                          "Для помощи обращаться к @qwaaantex",
-                          style: TextStyle(color: Colors.white60),
-                        )),
-                  )
-                ],
-              )),
-          const Text(
-            "О УСТРОЙСТВЕ",
-            textAlign: TextAlign.center,
-            style: TextStyle(color: Colors.white60, fontSize: 15),
-          ),
-          Card(
-              // ignore: deprecated_member_use
-              color: Colors.purple.withOpacity(0.5),
-              margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
-              child: ExpansionTile(
-                leading: const Icon(
-                  BoxIcons.bx_time,
-                  size: 25,
-                ),
-                trailing: Icon(
-                  isOpenedHelped ? Icons.arrow_drop_up : Icons.arrow_drop_down,
-                  size: 25,
-                ),
-                onExpansionChanged: (changed) {
-                  setState(() {
-                    isOpenedHelped = !isOpenedHelped;
-                  });
-                },
-                collapsedShape: const RoundedRectangleBorder(
-                  side: BorderSide(color: Colors.transparent),
-                ),
-                shape: const RoundedRectangleBorder(
-                  side: BorderSide(color: Colors.transparent),
-                ),
-                title: const Text(
-                  "Время",
-                  style: TextStyle(color: Colors.white),
-                ),
-                children: [
-                  Card(
-                    color: Colors.purple.shade600,
-                    child: SizedBox(
-                        width: MediaQuery.of(context).size.width * 0.5,
-                        child: const Text(
-                          "Для помощи обращаться к @qwaaantex",
-                          style: TextStyle(color: Colors.white60),
-                        )),
-                  ),
-                ],
-              )),
-          Card(
-              // ignore: deprecated_member_use
-              color: Colors.purple.withOpacity(0.5),
-              margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
-              child: ExpansionTile(
-                  leading: const Icon(
-                    Bootstrap.calendar_date,
-                    size: 21,
-                  ),
-                  trailing: Icon(
-                    isOpenedHelped
-                        ? Icons.arrow_drop_up
-                        : Icons.arrow_drop_down,
-                    size: 25,
-                  ),
-                  onExpansionChanged: (changed) {
-                    setState(() {
-                      isOpenedHelped = !isOpenedHelped;
-                    });
-                  },
-                  collapsedShape: const RoundedRectangleBorder(
-                    side: BorderSide(color: Colors.transparent),
-                  ),
-                  shape: const RoundedRectangleBorder(
-                    side: BorderSide(color: Colors.transparent),
-                  ),
-                  title: const Text(
-                    "Дата",
-                    style: TextStyle(color: Colors.white),
-                  ),
-                  children: [
-                    Card(
-                      color: Colors.purple.shade600,
-                      child: SizedBox(
-                          width: MediaQuery.of(context).size.width * 0.5,
-                          child: const Text(
-                            "Для помощи обращаться к @qwaaantex",
-                            style: TextStyle(color: Colors.white60),
-                          )),
-                    )
-                  ])),
-          const Text(
-            "СВЯЗЬ",
-            textAlign: TextAlign.center,
-            style: TextStyle(color: Colors.white60, fontSize: 15),
-          ),
-          Card(
-              // ignore: deprecated_member_use
-              color: Colors.purple.withOpacity(0.5),
-              margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
-              child: ExpansionTile(
-                leading: const Icon(
-                  Bootstrap.info,
-                  size: 25,
-                ),
-                trailing: Icon(
-                  isOpenedHelped ? Icons.arrow_drop_up : Icons.arrow_drop_down,
-                  size: 25,
-                ),
-                onExpansionChanged: (changed) {
-                  setState(() {
-                    isOpenedHelped = !isOpenedHelped;
-                  });
-                },
-                collapsedShape: const RoundedRectangleBorder(
-                  side: BorderSide(color: Colors.transparent),
-                ),
-                shape: const RoundedRectangleBorder(
-                  side: BorderSide(color: Colors.transparent),
-                ),
-                title: const Text(
-                  "Связаться с нами",
-                  style: TextStyle(color: Colors.white),
-                ),
-                children: [
-                  Card(
-                    color: Colors.purple.shade600,
-                    child: SizedBox(
-                        width: MediaQuery.of(context).size.width * 0.5,
-                        child: const Text(
-                          "Для помощи обращаться к @qwaaantex",
-                          style: TextStyle(color: Colors.white60),
-                        )),
-                  )
-                ],
-              )),
-          const Text(
-            "РОЗЫГРЫШИ",
-            textAlign: TextAlign.center,
-            style: TextStyle(color: Colors.white60, fontSize: 15),
-          ),
-          Card(
-              // ignore: deprecated_member_use
-              color: Colors.purple.withOpacity(0.5),
-              margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
-              child: ExpansionTile(
-                leading: const Icon(
-                  BoxIcons.bx_calendar_event,
-                  size: 25,
-                ),
-                trailing: Icon(
-                  isOpenedHelped ? Icons.arrow_drop_up : Icons.arrow_drop_down,
-                  size: 25,
-                ),
-                onExpansionChanged: (changed) {
-                  setState(() {
-                    isOpenedHelped = !isOpenedHelped;
-                  });
-                },
-                collapsedShape: const RoundedRectangleBorder(
-                  side: BorderSide(color: Colors.transparent),
-                ),
-                shape: const RoundedRectangleBorder(
-                  side: BorderSide(color: Colors.transparent),
-                ),
-                title: const Text(
-                  "События",
-                  style: TextStyle(color: Colors.white),
-                ),
-                children: [
-                  Card(
-                    color: Colors.purple.shade600,
-                    child: SizedBox(
-                        width: MediaQuery.of(context).size.width * 0.5,
-                        child: const Text(
-                          "Для помощи обращаться к @qwaaantex",
-                          style: TextStyle(color: Colors.white60),
-                        )),
-                  )
-                ],
-              )),
-          const Text(
-            "ПОМОЩЬ",
-            textAlign: TextAlign.center,
-            style: TextStyle(color: Colors.white60, fontSize: 15),
-          ),
-          Card(
-              // ignore: deprecated_member_use
-              color: Colors.purple.withOpacity(0.5),
-              margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
-              child: ExpansionTile(
-                leading: const Icon(
-                  BoxIcons.bx_help_circle,
-                  size: 25,
-                ),
-                trailing: Icon(
-                  isOpenedHelped ? Icons.arrow_drop_up : Icons.arrow_drop_down,
-                  size: 25,
-                ),
-                onExpansionChanged: (changed) {
-                  setState(() {
-                    isOpenedHelped = !isOpenedHelped;
-                  });
-                },
-                collapsedShape: const RoundedRectangleBorder(
-                  side: BorderSide(color: Colors.transparent),
-                ),
-                shape: const RoundedRectangleBorder(
-                  side: BorderSide(color: Colors.transparent),
-                ),
-                title: const Text(
-                  "Тех. Поддержка",
-                  style: TextStyle(color: Colors.white),
-                ),
-                children: [
-                  Card(
-                    color: Colors.purple.shade600,
-                    child: SizedBox(
-                        width: MediaQuery.of(context).size.width * 0.5,
-                        child: const Text(
-                          "Для помощи обращаться к @qwaaantex",
-                          style: TextStyle(color: Colors.white60),
-                        )),
-                  ),
-                ],
-              )),
-          Card(
-              // ignore: deprecated_member_use
-              color: Colors.purple.withOpacity(0.5),
-              margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
-              child: ExpansionTile(
-                  leading: const Icon(
-                    BoxIcons.bx_error,
-                    size: 25,
-                  ),
-                  trailing: Icon(
-                    isOpenedHelped
-                        ? Icons.arrow_drop_up
-                        : Icons.arrow_drop_down,
-                    size: 25,
-                  ),
-                  onExpansionChanged: (changed) {
-                    setState(() {
-                      isOpenedHelped = !isOpenedHelped;
-                    });
-                  },
-                  collapsedShape: const RoundedRectangleBorder(
-                    side: BorderSide(color: Colors.transparent),
-                  ),
-                  shape: const RoundedRectangleBorder(
-                    side: BorderSide(color: Colors.transparent),
-                  ),
-                  title: const Text(
-                    "Сообщить о ошибке",
-                    style: TextStyle(color: Colors.white),
-                  ),
-                  children: [
-                    Card(
-                      color: Colors.purple.shade600,
-                      child: SizedBox(
-                          width: MediaQuery.of(context).size.width * 0.5,
-                          child: const Text(
-                            "Для помощи обращаться к @qwaaantex",
-                            style: TextStyle(color: Colors.white60),
-                          )),
-                    )
-                  ])),
-          const Text(
-            "ДОКУМЕНТЫ",
-            textAlign: TextAlign.center,
-            style: TextStyle(color: Colors.white60, fontSize: 15),
-          ),
-          Card(
-              // ignore: deprecated_member_use
-              color: Colors.purple.withOpacity(0.5),
-              margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
-              child: ExpansionTile(
-                leading: const Icon(
-                  Bootstrap.list_check,
-                  size: 25,
-                ),
-                trailing: Icon(
-                  isOpenedHelped ? Icons.arrow_drop_up : Icons.arrow_drop_down,
-                  size: 25,
-                ),
-                onExpansionChanged: (changed) {
-                  setState(() {
-                    isOpenedHelped = !isOpenedHelped;
-                  });
-                },
-                collapsedShape: const RoundedRectangleBorder(
-                  side: BorderSide(color: Colors.transparent),
-                ),
-                shape: const RoundedRectangleBorder(
-                  side: BorderSide(color: Colors.transparent),
-                ),
-                title: const Text(
-                  "Лицензия",
-                  style: TextStyle(color: Colors.white),
-                ),
-                children: [
-                  Card(
+              margin: const EdgeInsets.symmetric(vertical: 4, horizontal: 10),
+              padding: const EdgeInsets.only(bottom: 5, top: 5),
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(24),
+                  color: Colors.grey.shade800),
+              child: Column(children: [
+                Card(
                     // ignore: deprecated_member_use
-                    color: Colors.purple.withOpacity(0.5),
-                    child: SizedBox(
-                        width: MediaQuery.of(context).size.width * 0.5,
-                        child: const Text(
-                          "Для помощи обращаться к @qwaaantex",
-                          style: TextStyle(color: Colors.white60),
-                        )),
-                  )
-                ],
-              ))
+                    color: Colors.grey[700],
+                    margin:
+                        const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                    child: const ListTile(
+                      leading: Icon(
+                        BoxIcons.bx_home,
+                        size: 25,
+                        color: Colors.white70,
+                      ),
+                      title: Text(
+                        "Погода",
+                        style: TextStyle(color: Colors.white70),
+                      ),
+                      shape: RoundedRectangleBorder(
+                        side: BorderSide(color: Colors.transparent),
+                      ),
+                    )),
+                Card(
+                    // ignore: deprecated_member_use
+                    color: Colors.grey[700],
+                    margin:
+                        const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                    child: const ListTile(
+                      leading: Icon(
+                        BoxIcons.bx_list_check,
+                        size: 25,
+                        color: Colors.white70,
+                      ),
+                      title: Text(
+                        "Города",
+                        style: TextStyle(color: Colors.white70),
+                      ),
+                      shape: RoundedRectangleBorder(
+                        side: BorderSide(color: Colors.transparent),
+                      ),
+                    )),
+              ])),
+          Container(
+              margin: const EdgeInsets.symmetric(vertical: 4, horizontal: 10),
+              padding: const EdgeInsets.only(bottom: 5, top: 5),
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(24),
+                  color: Colors.grey.shade800),
+              child: Column(children: [
+                Card(
+                    // ignore: deprecated_member_use
+                    color: Colors.grey[700],
+                    margin:
+                        const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                    child: const ListTile(
+                      leading: Icon(
+                        BoxIcons.bx_time,
+                        size: 22,
+                        color: Colors.white70,
+                      ),
+                      title: Text(
+                        "Время",
+                        style: TextStyle(color: Colors.white70),
+                      ),
+                      shape: RoundedRectangleBorder(
+                        side: BorderSide(color: Colors.transparent),
+                      ),
+                    )),
+                Card(
+                    // ignore: deprecated_member_use
+                    color: Colors.grey[700],
+                    margin:
+                        const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                    child: const ListTile(
+                      leading: Icon(
+                        Bootstrap.calendar_date,
+                        size: 21,
+                        color: Colors.white70,
+                      ),
+                      title: Text(
+                        "Дата",
+                        style: TextStyle(color: Colors.white70),
+                      ),
+                      shape: RoundedRectangleBorder(
+                        side: BorderSide(color: Colors.transparent),
+                      ),
+                    )),
+              ])),
+          Container(
+            margin: const EdgeInsets.symmetric(vertical: 4, horizontal: 10),
+            padding: const EdgeInsets.only(bottom: 5, top: 5),
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(24),
+                color: Colors.grey.shade800),
+            child: Column(
+              children: [
+                Card(
+                    // ignore: deprecated_member_use
+                    color: Colors.grey[700],
+                    margin:
+                        const EdgeInsets.symmetric(vertical: 4, horizontal: 10),
+                    child: const ListTile(
+                      leading: Icon(BoxIcons.bx_help_circle,
+                          size: 25, color: Colors.white70),
+                      shape: RoundedRectangleBorder(
+                        side: BorderSide(color: Colors.transparent),
+                      ),
+                      title: Text(
+                        "Тех. Поддержка",
+                        style: TextStyle(color: Colors.white70),
+                      ),
+                    )),
+                Card(
+                    // ignore: deprecated_member_use
+                    color: Colors.grey[700],
+                    margin:
+                        const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                    child: const ListTile(
+                      leading: Icon(
+                        Bootstrap.info,
+                        size: 25,
+                        color: Colors.white70,
+                      ),
+                      shape: RoundedRectangleBorder(
+                        side: BorderSide(color: Colors.transparent),
+                      ),
+                      title: Text(
+                        "Связаться с нами",
+                        style: TextStyle(color: Colors.white70),
+                      ),
+                    )),
+                Card(
+                    // ignore: deprecated_member_use
+                    color: Colors.grey[700],
+                    margin:
+                        const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                    child: const ListTile(
+                      leading: Icon(
+                        BoxIcons.bx_error,
+                        size: 25,
+                        color: Colors.white70,
+                      ),
+                      shape: RoundedRectangleBorder(
+                        side: BorderSide(color: Colors.transparent),
+                      ),
+                      title: Text(
+                        "Сообщить о ошибке",
+                        style: TextStyle(
+                          color: Colors.white70,
+                        ),
+                      ),
+                    )),
+                Card(
+                    // ignore: deprecated_member_use
+                    color: Colors.grey[700],
+                    margin:
+                        const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                    child: const ListTile(
+                      leading: Icon(
+                        Bootstrap.list_check,
+                        size: 25,
+                        color: Colors.white70,
+                      ),
+                      shape: RoundedRectangleBorder(
+                        side: BorderSide(color: Colors.transparent),
+                      ),
+                      title: Text(
+                        "Лицензия",
+                        style: TextStyle(color: Colors.white70),
+                      ),
+                    ))
+              ],
+            ),
+          ),
         ]));
   }
 }

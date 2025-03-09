@@ -67,7 +67,7 @@ class TownsScreenAppState extends State<TownScreenApp> {
   Widget build(BuildContext context) {
     return Scaffold(
         key: scaffoldKey,
-        drawer: const DrawerPage(),
+        endDrawer: const DrawerPage(),
         body: SafeArea(
             child: AppBarConnection(
                 appBars: [
@@ -75,30 +75,24 @@ class TownsScreenAppState extends State<TownScreenApp> {
                 behavior: const MaterialAppBarBehavior(floating: true),
                 body: Container(
                     height: 55,
-                    color: Colors.purple.shade500,
+                    color: Colors.grey[850],
                     alignment: Alignment.center,
                     child: Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              mainAxisAlignment: MainAxisAlignment.start,
                               children: [
-                                IconButton(
-                                    onPressed: () {
-                                      scaffoldKey.currentState?.openDrawer();
-                                    },
-                                    icon: const Icon(
-                                      BoxIcons.bx_menu_alt_left,
-                                      size: 25,
-                                      color: Colors.white,
-                                    )),
-                                const Text(
-                                  "WeathFul",
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 20,
-                                      fontFamily: 'RobotoMono'),
+                                const Align(
+                                  alignment: Alignment.centerLeft,
+                                  child: Text(
+                                    "WeathFul",
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 20,
+                                        fontFamily: 'RobotoMono'),
+                                  ),
                                 ),
                                 const IconButton(
                                     onPressed: null,
@@ -106,16 +100,23 @@ class TownsScreenAppState extends State<TownScreenApp> {
                                       BoxIcons.bx_search_alt,
                                       size: 25,
                                       color: Colors.white,
-                                    ))
+                                    )),
+                                IconButton(
+                                    onPressed: () {
+                                      scaffoldKey.currentState?.openEndDrawer();
+                                    },
+                                    icon: const Icon(
+                                      BoxIcons.bx_menu_alt_right,
+                                      size: 25,
+                                      color: Colors.white,
+                                    )),
                               ]),
                         ])),
               )
             ],
                 child: Stack(children: [
                   Container(
-                    decoration: const BoxDecoration(
-                        gradient: LinearGradient(
-                            colors: [Colors.purpleAccent, Colors.deepPurple])),
+                    decoration: BoxDecoration(color: Colors.grey[850]),
                     width: MediaQuery.of(context).size.width,
                     height: MediaQuery.of(context).size.height,
                   ),
@@ -154,7 +155,7 @@ class TownsScreenAppState extends State<TownScreenApp> {
                               margin: const EdgeInsets.symmetric(
                                   horizontal: 20, vertical: 2),
                               // ignore: deprecated_member_use
-                              color: Colors.purple.withOpacity(0.5),
+                              color: Colors.grey.withOpacity(0.3),
                               child: ListTile(
                                   trailing: IconButton(
                                     onPressed: () {

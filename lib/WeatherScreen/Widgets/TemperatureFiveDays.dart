@@ -25,7 +25,7 @@ class TemperaturefivedaysState extends State<TemperatureFiveDays> {
         await dotenv.load(fileName: "key.env");
 
         final apiKey = dotenv.env['api-key'];
-        wf = WeatherFactory(apiKey!, language: Language.RUSSIAN);
+        wf = WeatherFactory(apiKey!, language: Language.ENGLISH);
         _fetchForecast();
       } catch (e) {
         print('Error fetching weather: $e');
