@@ -1,4 +1,3 @@
-import 'package:WeathFul/MainWidgets/Widgets/Drawer.dart';
 import 'package:WeathFul/Providers/CityProvider.dart';
 import 'package:WeathFul/TownsScreen/Screens/TownsScreen.dart';
 import 'package:WeathFul/WeatherScreen/Screens/WeatherScreenMain.dart';
@@ -31,9 +30,6 @@ class WeatherAppScreenState extends State<WeatherAppScreen> {
     final cityProvider = Provider.of<CityProvider>(context);
     String cityName = cityProvider.cityName;
     return Scaffold(
-        key: scaffoldKey,
-        backgroundColor: Colors.grey.withOpacity(0.2),
-        endDrawer: const DrawerPage(),
         bottomNavigationBar: ConvexAppBar(
           height: 60,
           color: Colors.grey,

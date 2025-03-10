@@ -28,7 +28,6 @@ class TemperatureState extends State<Temperature> {
         wf = WeatherFactory(apiKey!, language: Language.ENGLISH);
         temp = await wf.currentWeatherByCityName(widget.nameCity);
         weather = await wf.currentWeatherByCityName(widget.nameCity);
-
         setState(() {
           isLoading = true;
         });

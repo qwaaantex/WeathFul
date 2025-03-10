@@ -28,8 +28,7 @@ class WeatherScreenState extends State<WeatherScreenMain> {
     return Scaffold(
         key: scaffoldKey,
         endDrawer: const DrawerPage(),
-        body: SafeArea(
-            child: AppBarConnection(
+        body: AppBarConnection(
           appBars: [
             CustomAppBar.AppBar(
               behavior: const MaterialAppBarBehavior(floating: true),
@@ -105,6 +104,6 @@ class WeatherScreenState extends State<WeatherScreenMain> {
               ],
             ),
           ]),
-        )));
+        ));
   }
 }
