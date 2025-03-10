@@ -25,6 +25,24 @@ class DrawerState extends State<DrawerPage> {
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(24),
                     color: Colors.grey.shade800),
+                child: ListTile(
+                  splashColor: Colors.transparent,
+                  onTap: () {},
+                  leading: const Icon(
+                    BoxIcons.bx_share_alt,
+                    color: Colors.white70,
+                  ),
+                  title: const Text(
+                    "Поделиться",
+                    style: TextStyle(color: Colors.white70),
+                  ),
+                )),
+            Container(
+                margin: const EdgeInsets.symmetric(vertical: 4, horizontal: 10),
+                padding: const EdgeInsets.only(bottom: 5, top: 5),
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(24),
+                    color: Colors.grey.shade800),
                 child: Column(children: [
                   ListTile(
                     splashColor: Colors.transparent,

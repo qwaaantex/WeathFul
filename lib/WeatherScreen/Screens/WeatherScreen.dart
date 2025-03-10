@@ -1,10 +1,8 @@
 import 'package:WeathFul/Providers/CityProvider.dart';
 import 'package:WeathFul/TownsScreen/Screens/TownsScreen.dart';
 import 'package:WeathFul/WeatherScreen/Screens/WeatherScreenMain.dart';
-import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:flutter/material.dart';
 
-import 'package:icons_plus/icons_plus.dart';
 import 'package:provider/provider.dart';
 
 class WeatherAppScreen extends StatefulWidget {
@@ -30,31 +28,12 @@ class WeatherAppScreenState extends State<WeatherAppScreen> {
     final cityProvider = Provider.of<CityProvider>(context);
     String cityName = cityProvider.cityName;
     return Scaffold(
-        bottomNavigationBar: ConvexAppBar(
-          height: 60,
-          color: Colors.grey,
-          backgroundColor: Colors.grey[900],
-          activeColor: Colors.grey[600],
-          items: const [
-            TabItem(icon: Bootstrap.sun, title: 'Погода'),
-            TabItem(
-              icon: BoxIcons.bx_building_house,
-              title: 'Города',
-            ),
-          ],
-          onTap: (i) {
-            setState(() {
-              currentindex = i;
-            });
-          },
+      body: IndexedStack(index: currentindex, children: [
+        const WeatherScreenMain(),
+        TownScreenApp(
+          cityName: cityName,
         ),
-        body: SafeArea(
-          child: IndexedStack(index: currentindex, children: [
-            const WeatherScreenMain(),
-            TownScreenApp(
-              cityName: cityName,
-            ),
-          ]),
-        ));
+      ]),
+    );
   }
 }

@@ -1,22 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:weather/weather.dart';
 
-class Temperature extends StatefulWidget {
+class Temperatures extends StatefulWidget {
   final String nameCity;
-  const Temperature({super.key, required this.nameCity});
+  const Temperatures({super.key, required this.nameCity});
 
   @override
-  State<StatefulWidget> createState() => TemperatureState();
+  State<Temperatures> createState() => TemperaturesState();
 }
 
-class TemperatureState extends State<Temperature> {
+class TemperaturesState extends State<Temperatures> {
   late WeatherFactory wf;
+  bool isLoading = false;
   Weather? temp;
   Weather? weather;
-  bool isLoading = false;
-
   @override
   void initState() {
     super.initState();
@@ -42,25 +42,16 @@ class TemperatureState extends State<Temperature> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return Row(
       children: [
         isLoading
-            ? Text(
-                "${temp?.temperature?.celsius?.round()}°",
-                textAlign: TextAlign.center,
-                style: const TextStyle(color: Colors.white, fontSize: 36),
+            ? const CircularProgressIndicator(
+                color: Colors.grey,
               )
-            : const Column(children: [
-                SizedBox(
-                  height: 10,
-                ),
-                CircularProgressIndicator(
-                  color: Colors.grey,
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-              ])
+            : Text(
+                "${temp?.tempMin?.celsius?.round()}°/${temp?.tempMax?.celsius?.round()}°",
+                style: const TextStyle(color: Colors.grey, fontSize: 20),
+              )
       ],
     );
   }

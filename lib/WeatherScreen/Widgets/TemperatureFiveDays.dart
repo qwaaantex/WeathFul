@@ -63,19 +63,21 @@ class TemperaturefivedaysState extends State<TemperatureFiveDays> {
       child: isLoading
           ? const Center(
               child: CircularProgressIndicator(
-              color: Colors.transparent,
+              color: Colors.grey,
             ))
           : forecast.isEmpty
               ? const Center(child: Text('Нет данных'))
-              : ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: forecast.length,
-                  itemExtent: 100,
-                  itemBuilder: (context, index) {
-                    final weather = forecast[index];
-                    return Container(
-                      width: 200,
-                      child: Card(
+              : Container(
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(14),
+                      color: Colors.grey.shade800),
+                  child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: forecast.length,
+                    itemExtent: 100,
+                    itemBuilder: (context, index) {
+                      final weather = forecast[index];
+                      return Card(
                         color: Colors.transparent,
                         child: Stack(
                           children: [
@@ -104,10 +106,9 @@ class TemperaturefivedaysState extends State<TemperatureFiveDays> {
                                 )),
                           ],
                         ),
-                      ),
-                    );
-                  },
-                ),
+                      );
+                    },
+                  )),
     );
   }
 }
