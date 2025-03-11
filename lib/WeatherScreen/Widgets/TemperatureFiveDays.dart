@@ -77,35 +77,32 @@ class TemperaturefivedaysState extends State<TemperatureFiveDays> {
                     itemExtent: 100,
                     itemBuilder: (context, index) {
                       final weather = forecast[index];
-                      return Card(
-                        color: Colors.transparent,
-                        child: Stack(
-                          children: [
-                            Stack(
-                              clipBehavior: Clip.none,
-                              children: [
-                                if (weather.weatherIcon != null)
-                                  Image.network(
-                                    'http://openweathermap.org/img/wn/${weather.weatherIcon}@2x.png',
-                                  ),
-                                Align(
-                                    alignment: Alignment.topCenter,
-                                    child: Text(
-                                      "${weather.date?.hour}:00",
-                                      style: const TextStyle(
-                                          color: Colors.white, fontSize: 15),
-                                    )),
-                              ],
-                            ),
-                            Align(
-                                alignment: Alignment.bottomCenter,
-                                child: Text(
-                                  "${weather.temperature?.celsius?.round()}°",
-                                  style: const TextStyle(
-                                      color: Colors.white, fontSize: 15),
-                                )),
-                          ],
-                        ),
+                      return Stack(
+                        children: [
+                          Stack(
+                            clipBehavior: Clip.none,
+                            children: [
+                              if (weather.weatherIcon != null)
+                                Image.network(
+                                  'http://openweathermap.org/img/wn/${weather.weatherIcon}@2x.png',
+                                ),
+                              Align(
+                                  alignment: Alignment.topCenter,
+                                  child: Text(
+                                    "${weather.date?.hour}:00",
+                                    style: const TextStyle(
+                                        color: Colors.white, fontSize: 15),
+                                  )),
+                            ],
+                          ),
+                          Align(
+                              alignment: Alignment.bottomCenter,
+                              child: Text(
+                                "${weather.temperature?.celsius?.round()}°",
+                                style: const TextStyle(
+                                    color: Colors.white, fontSize: 15),
+                              )),
+                        ],
                       );
                     },
                   )),

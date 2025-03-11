@@ -48,7 +48,7 @@ class TemperatureState extends State<Temperature> {
             ? Text(
                 "${temp?.temperature?.celsius?.round()}°",
                 textAlign: TextAlign.center,
-                style: const TextStyle(color: Colors.white, fontSize: 36),
+                style: const TextStyle(color: Colors.white, fontSize: 56),
               )
             : const Column(children: [
                 SizedBox(

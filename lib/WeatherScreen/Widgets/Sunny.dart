@@ -2,14 +2,14 @@ import 'package:dashed_circular_progress_bar/dashed_circular_progress_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-class Winds extends StatefulWidget {
-  const Winds({super.key});
+class Sunny extends StatefulWidget {
+  const Sunny({super.key});
 
   @override
-  State<StatefulWidget> createState() => WindsState();
+  State<StatefulWidget> createState() => SunnyState();
 }
 
-class WindsState extends State<Winds> {
+class SunnyState extends State<Sunny> {
   final ValueNotifier<double> _valueNotifier = ValueNotifier(0);
   @override
   Widget build(BuildContext context) {
@@ -20,33 +20,25 @@ class WindsState extends State<Winds> {
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(24),
             color: Colors.grey.shade800),
-        child:
-            Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+        child: Row(children: [
           SizedBox(
               width: 200,
               child: DashedCircularProgressBar.aspectRatio(
-                aspectRatio: 1,
                 valueNotifier: _valueNotifier,
-                progress: 40,
-                maxProgress: 150,
-                corners: StrokeCap.butt,
-                foregroundColor: Colors.lightGreenAccent,
-                backgroundColor: const Color(0xffeeeeee),
-                foregroundStrokeWidth: 15,
-                backgroundStrokeWidth: 15,
+                aspectRatio: 2.1, // width ÷ height
+                progress: 34,
+                startAngle: 270,
+                sweepAngle: 180,
+                circleCenterAlignment: Alignment.bottomCenter,
+                foregroundColor: Colors.black,
+                backgroundColor: Colors.grey.shade600,
+                foregroundStrokeWidth: 3,
+                backgroundStrokeWidth: 2,
+                backgroundGapSize: 2,
+                backgroundDashSize: 1,
+                seekColor: Colors.yellow,
+                seekSize: 22,
                 animation: true,
-                child: Center(
-                  child: ValueListenableBuilder(
-                    valueListenable: _valueNotifier,
-                    builder: (_, double value, __) => Text(
-                      '${value.toInt()} км/ч',
-                      style: const TextStyle(
-                          color: Colors.green,
-                          fontWeight: FontWeight.w300,
-                          fontSize: 40),
-                    ),
-                  ),
-                ),
               )),
           const SizedBox(
             width: 10,
@@ -56,7 +48,7 @@ class WindsState extends State<Winds> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const Text(
-                  'Скорость: 10%',
+                  'Влажность: 10%',
                   style: TextStyle(color: Colors.white, fontSize: 18),
                 ),
                 const Text(

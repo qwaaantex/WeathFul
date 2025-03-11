@@ -1,8 +1,9 @@
 import 'package:WeathFul/MainWidgets/Widgets/Drawer.dart';
 import 'package:WeathFul/Providers/CityProvider.dart';
-import 'package:WeathFul/WeatherScreen/Widgets/Day.dart';
 import 'package:WeathFul/WeatherScreen/Widgets/Humidaty.dart';
 import 'package:WeathFul/WeatherScreen/Widgets/Name.dart';
+import 'package:WeathFul/WeatherScreen/Widgets/Navigation.bar.dart';
+import 'package:WeathFul/WeatherScreen/Widgets/Sunny.dart';
 import 'package:WeathFul/WeatherScreen/Widgets/Temperature.dart';
 import 'package:WeathFul/WeatherScreen/Widgets/TemperatureFiveDays.dart';
 import 'package:WeathFul/WeatherScreen/Widgets/Winds.dart';
@@ -29,46 +30,47 @@ class WeatherScreenState extends State<WeatherScreenMain> {
     String cityName = cityProvider.cityName;
     return Scaffold(
         key: scaffoldKey,
-        endDrawer: const DrawerPage(),
+        drawer: const DrawerPage(),
         body: AppBarConnection(
           appBars: [
             CustomAppBar.AppBar(
-              behavior: const MaterialAppBarBehavior(floating: true),
-              body: Container(
+                behavior: const MaterialAppBarBehavior(floating: true),
+                body: Container(
                   height: 90,
                   color: Colors.grey[850],
                   child: Stack(clipBehavior: Clip.none, children: [
-                    Align(
-                        alignment: Alignment.bottomRight,
-                        child: IconButton(
-                            onPressed: () {
-                              scaffoldKey.currentState?.openEndDrawer();
-                            },
-                            icon: const Icon(
-                              BoxIcons.bx_menu_alt_right,
-                              size: 25,
-                              color: Colors.white,
-                            ))),
                     Row(
-                      children: [
-                        const SizedBox(
-                          width: 10,
-                        ),
-                        Center(
-                            child: Container(
-                                alignment: Alignment.bottomCenter,
-                                margin: const EdgeInsets.only(bottom: 10),
-                                child: const Text(
-                                  "WeathFul",
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 20,
-                                      fontFamily: 'RobotoMono'),
-                                ))),
-                      ],
-                    )
-                  ])),
-            )
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          IconButton(
+                              onPressed: () {
+                                scaffoldKey.currentState?.openDrawer();
+                              },
+                              icon: const Icon(
+                                BoxIcons.bx_menu_alt_left,
+                                size: 25,
+                                color: Colors.white,
+                              )),
+                          const Column(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Align(child: NavigationBarAppBar()),
+                            ],
+                          ),
+                          IconButton(
+                              onPressed: () {
+                                scaffoldKey.currentState?.openDrawer();
+                              },
+                              icon: const Icon(
+                                BoxIcons.bx_question_mark,
+                                size: 25,
+                                color: Colors.white,
+                              )),
+                        ])
+                  ]),
+                ))
           ],
           child: Stack(
             children: [
@@ -86,25 +88,12 @@ class WeatherScreenState extends State<WeatherScreenMain> {
                     Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        const Align(
-                          alignment: Alignment.topCenter,
-                          child: Day(),
-                        ),
                         Align(
                           alignment: Alignment.bottomCenter,
                           child: Name(nameCity: cityName),
                         ),
                         Temperature(
                           nameCity: cityName,
-                        ),
-                        const Center(
-                            child: Text(
-                          "Прогноз на 5 дней",
-                          style: TextStyle(color: Colors.white, fontSize: 18),
-                          textAlign: TextAlign.center,
-                        )),
-                        const SizedBox(
-                          height: 10,
                         ),
                         TemperatureFiveDays(cityName: cityName),
                         const SizedBox(
@@ -119,10 +108,7 @@ class WeatherScreenState extends State<WeatherScreenMain> {
                         const SizedBox(
                           height: 10,
                         ),
-                        const SizedBox(
-                          width: 200,
-                          child: Humidaty(),
-                        ),
+                        const Humidaty(),
                         const SizedBox(
                           height: 10,
                         ),
@@ -135,10 +121,38 @@ class WeatherScreenState extends State<WeatherScreenMain> {
                         const SizedBox(
                           height: 10,
                         ),
+                        const Winds(),
                         const SizedBox(
-                          width: 200,
-                          child: Winds(),
+                          height: 10,
                         ),
+                        const Center(
+                            child: Text(
+                          "Восход солнца",
+                          style: TextStyle(color: Colors.white, fontSize: 18),
+                          textAlign: TextAlign.center,
+                        )),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        const Sunny(),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        const Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              "Создано с поддержкой WeathFul.",
+                              style:
+                                  TextStyle(color: Colors.grey, fontSize: 14),
+                            ),
+                            Text(
+                              "Ещё",
+                              style: TextStyle(
+                                  color: Colors.blueAccent, fontSize: 14),
+                            )
+                          ],
+                        )
                       ],
                     )
                   ],
