@@ -28,6 +28,8 @@ dependencies:
   flutter_dotenv: ^5.2.1
   hugeicons: ^0.0.7
   dashed_circular_progress_bar: ^0.0.6
+  url_launcher: ^6.3.1
+  rive_animated_icon: ^2.0.3
 
 dev_dependencies:
   flutter_test:

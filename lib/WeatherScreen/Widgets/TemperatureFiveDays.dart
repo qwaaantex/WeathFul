@@ -66,7 +66,11 @@ class TemperaturefivedaysState extends State<TemperatureFiveDays> {
               color: Colors.grey,
             ))
           : forecast.isEmpty
-              ? const Center(child: Text('Нет данных'))
+              ? const Center(
+                  child: Text(
+                  'Нет данных',
+                  style: TextStyle(color: Colors.grey, fontSize: 14),
+                ))
               : Container(
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(14),

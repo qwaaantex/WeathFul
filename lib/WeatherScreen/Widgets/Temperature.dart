@@ -32,9 +32,13 @@ class TemperatureState extends State<Temperature> {
           isLoading = true;
         });
       } catch (e) {
-        setState(() {
+        if (mounted) {
+          setState(() {
+            isLoading = false;
+          });
+        } else {
           isLoading = false;
-        });
+        }
         print('Error fetching weather: $e');
       }
     });
