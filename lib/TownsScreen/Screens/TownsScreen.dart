@@ -97,7 +97,8 @@ class TownsScreenAppState extends State<TownScreenApp> {
                             0 => const Text(
                                 "Центральная Россия",
                                 style: TextStyle(
-                                  color: Colors.white60,
+                                  color: Colors.grey,
+                                  fontWeight: FontWeight.bold,
                                   fontSize: 18,
                                 ),
                                 textAlign: TextAlign.center,
@@ -105,7 +106,8 @@ class TownsScreenAppState extends State<TownScreenApp> {
                             5 => const Text(
                                 "Урал",
                                 style: TextStyle(
-                                  color: Colors.white60,
+                                  color: Colors.grey,
+                                  fontWeight: FontWeight.bold,
                                   fontSize: 18,
                                 ),
                                 textAlign: TextAlign.center,
@@ -113,7 +115,8 @@ class TownsScreenAppState extends State<TownScreenApp> {
                             10 => const Text(
                                 "Сибирь",
                                 style: TextStyle(
-                                  color: Colors.white60,
+                                  color: Colors.grey,
+                                  fontWeight: FontWeight.bold,
                                   fontSize: 18,
                                 ),
                                 textAlign: TextAlign.center,
@@ -121,7 +124,8 @@ class TownsScreenAppState extends State<TownScreenApp> {
                             15 => const Text(
                                 "Дальний Восток",
                                 style: TextStyle(
-                                  color: Colors.white60,
+                                  color: Colors.grey,
+                                  fontWeight: FontWeight.bold,
                                   fontSize: 18,
                                 ),
                                 textAlign: TextAlign.center,
@@ -129,7 +133,7 @@ class TownsScreenAppState extends State<TownScreenApp> {
                             _ => Card(
                                 margin: const EdgeInsets.symmetric(
                                   horizontal: 20,
-                                  vertical: 2,
+                                  vertical: 4,
                                 ),
                                 color: Colors.grey.withOpacity(0.3),
                                 child: ListTile(
@@ -148,7 +152,7 @@ class TownsScreenAppState extends State<TownScreenApp> {
                                     },
                                     icon: const Icon(
                                       Icons.arrow_forward_ios,
-                                      color: Colors.white,
+                                      color: Colors.grey,
                                     ),
                                   ),
                                   subtitle: const Text(

@@ -27,7 +27,7 @@ class WeatherAppState extends State<WeatherApp> {
     String cityName = cityProvider.cityName;
     return MaterialApp(
       home: PageView(
-          physics: ClampingScrollPhysics(),
+          physics: AlwaysScrollableScrollPhysics(),
           controller: _controller,
           onPageChanged: (changed) {
             if (isChanged) {
