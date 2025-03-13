@@ -9,13 +9,7 @@ import 'package:flutter_appbar/components/appbar.dart' as CustomAppBar;
 
 class AppBarWeathFul extends StatefulWidget {
   final Widget child;
-  final bool isChanged;
-  final int index;
-  const AppBarWeathFul(
-      {super.key,
-      required this.child,
-      required this.isChanged,
-      required this.index});
+  const AppBarWeathFul({super.key, required this.child});
 
   @override
   State<StatefulWidget> createState() => AppBarWeathFulState();
@@ -48,12 +42,9 @@ class AppBarWeathFulState extends State<AppBarWeathFul> {
                               size: 25,
                               color: Colors.white,
                             )),
-                        Align(
+                        const Align(
                             alignment: Alignment.bottomCenter,
-                            child: NavigationBarAppBar(
-                              isChanged: widget.isChanged,
-                              index: widget.index,
-                            )),
+                            child: NavigationBarAppBar()),
                         IconButton(
                             onPressed: () {
                               scaffoldKey.currentState?.openDrawer();

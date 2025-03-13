@@ -32,7 +32,7 @@ class SunnyState extends State<Sunny> {
                       width: MediaQuery.of(context).size.width * 0.5,
                       child: DashedCircularProgressBar.aspectRatio(
                         valueNotifier: _valueNotifier,
-                        aspectRatio: 2.1, // width ÷ height
+                        aspectRatio: 2.1,
                         progress: 34,
                         startAngle: 270,
                         sweepAngle: 180,
@@ -80,11 +80,11 @@ class SunnyState extends State<Sunny> {
               children: [
                 Text(
                   'Влажность: 10%',
-                  style: TextStyle(color: Colors.white, fontSize: 18),
+                  style: TextStyle(color: Colors.white, fontSize: 14),
                 ),
                 Text(
                   'Ощущается: 5°',
-                  style: TextStyle(color: Colors.white, fontSize: 18),
+                  style: TextStyle(color: Colors.white, fontSize: 14),
                 ),
               ])
         ]));

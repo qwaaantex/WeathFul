@@ -49,8 +49,8 @@ class WindsState extends State<Winds> {
                                   '${value.toInt()} км/ч',
                                   style: const TextStyle(
                                       color: Colors.green,
-                                      fontWeight: FontWeight.w300,
-                                      fontSize: 40),
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 35),
                                 ),
                               ),
                             ),
@@ -89,11 +89,11 @@ class WindsState extends State<Winds> {
                   children: [
                     Text(
                       'Скорость: 10%',
-                      style: TextStyle(color: Colors.white, fontSize: 18),
+                      style: TextStyle(color: Colors.white, fontSize: 14),
                     ),
                     Text(
                       'Ощущается: 5°',
-                      style: TextStyle(color: Colors.white, fontSize: 18),
+                      style: TextStyle(color: Colors.white, fontSize: 14),
                     ),
                   ])
             ]));

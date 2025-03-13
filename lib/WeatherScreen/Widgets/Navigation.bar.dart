@@ -1,10 +1,9 @@
+import 'package:WeathFul/Providers/NavigationProvider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class NavigationBarAppBar extends StatefulWidget {
-  final bool isChanged;
-  final int index;
-  const NavigationBarAppBar(
-      {super.key, required this.isChanged, required this.index});
+  const NavigationBarAppBar({super.key});
 
   @override
   State<NavigationBarAppBar> createState() => NavigationBarAppBarState();
@@ -15,6 +14,7 @@ class NavigationBarAppBarState extends State<NavigationBarAppBar> {
 
   @override
   Widget build(BuildContext context) {
+    final navigationProvider = Provider.of<NavigationProvider>(context);
     return SizedBox(
       height: 40,
       width: MediaQuery.of(context).size.width * 0.1,
@@ -33,7 +33,7 @@ class NavigationBarAppBarState extends State<NavigationBarAppBar> {
                   width: 8,
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
-                    color: widget.index == index
+                    color: navigationProvider.indexing == index
                         ? Colors.white
                         : Colors.grey.withOpacity(0.1),
                   ),

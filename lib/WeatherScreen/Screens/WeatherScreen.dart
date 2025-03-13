@@ -6,14 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class WeatherAppScreen extends StatefulWidget {
-  final bool isChanged;
-  final int index;
   final PageController controller;
-  const WeatherAppScreen(
-      {super.key,
-      required this.isChanged,
-      required this.index,
-      required this.controller});
+  const WeatherAppScreen({super.key, required this.controller});
 
   @override
   State<WeatherAppScreen> createState() => WeatherAppScreenState();
@@ -36,14 +30,9 @@ class WeatherAppScreenState extends State<WeatherAppScreen> {
     String cityName = cityProvider.cityName;
     return Scaffold(
       body: IndexedStack(index: currentindex, children: [
-        WeatherScreenMain(
-          isChanged: widget.isChanged,
-          index: widget.index,
-        ),
+        const WeatherScreenMain(),
         TownScreenApp(
           cityName: cityName,
-          isChanged: widget.isChanged,
-          index: widget.index,
           controller: widget.controller,
         ),
       ]),

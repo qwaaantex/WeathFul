@@ -1,5 +1,6 @@
 import 'package:WeathFul/MainWidgets/Widgets/Drawer.dart';
 import 'package:WeathFul/Providers/CityProvider.dart';
+import 'package:WeathFul/WeatherScreen/Screens/WeatherScreenRules.dart';
 import 'package:WeathFul/WeatherScreen/Widgets/AppBar.dart';
 import 'package:WeathFul/WeatherScreen/Widgets/Humidaty.dart';
 import 'package:WeathFul/WeatherScreen/Widgets/Name.dart';
@@ -14,10 +15,7 @@ import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class WeatherScreenMain extends StatefulWidget {
-  final bool isChanged;
-  final int index;
-  const WeatherScreenMain(
-      {super.key, required this.isChanged, required this.index});
+  const WeatherScreenMain({super.key});
 
   @override
   State<WeatherScreenMain> createState() => WeatherScreenState();
@@ -34,8 +32,6 @@ class WeatherScreenState extends State<WeatherScreenMain> {
         key: scaffoldKey,
         drawer: const DrawerPage(),
         body: AppBarWeathFul(
-          isChanged: widget.isChanged,
-          index: widget.index,
           child: Stack(
             children: [
               Container(
@@ -61,55 +57,86 @@ class WeatherScreenState extends State<WeatherScreenMain> {
                       const SizedBox(
                         height: 20,
                       ),
-                      const Column(
+                      Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Center(
+                          const Center(
                               child: Text(
-                            "Влажность воздуха",
+                            "ВЛАЖНОСТЬ ВОЗДУХА",
                             style: TextStyle(
                                 color: Colors.grey,
-                                fontSize: 18,
+                                fontSize: 15,
                                 fontWeight: FontWeight.bold),
                             textAlign: TextAlign.center,
                           )),
-                          SizedBox(
+                          const SizedBox(
                             height: 10,
                           ),
-                          Humidaty(),
-                          SizedBox(
+                          Humidaty(
+                            nameCity: cityName,
+                          ),
+                          const SizedBox(
                             height: 10,
                           ),
-                          Center(
+                          ElevatedButton(
+                              onPressed: () async {
+                                if (!await launchUrl(_url)) {
+                                  throw Exception('Could not launch $_url');
+                                }
+                              },
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: Colors.grey.shade800,
+                                overlayColor: Colors.transparent,
+                                minimumSize: Size(
+                                    MediaQuery.of(context).size.width * 0.9,
+                                    MediaQuery.of(context).size.height * 0.05),
+                              ),
+                              child: const Row(children: [
+                                Text(
+                                  'ПОДРОБНЫЙ ПРОГНОЗ',
+                                  style: TextStyle(
+                                    color: Colors.grey,
+                                    fontSize: 15,
+                                  ),
+                                ),
+                                Icon(
+                                  Icons.arrow_forward_ios,
+                                  color: Colors.grey,
+                                )
+                              ])),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          const Center(
                               child: Text(
-                            "Скорость ветра",
+                            "СКОРОСТЬ ВЕТРА",
                             style: TextStyle(
                                 color: Colors.grey,
-                                fontSize: 18,
+                                fontSize: 15,
                                 fontWeight: FontWeight.bold),
                             textAlign: TextAlign.center,
                           )),
-                          SizedBox(
+                          const SizedBox(
                             height: 10,
                           ),
-                          Winds(),
-                          SizedBox(
+                          const Winds(),
+                          const SizedBox(
                             height: 10,
                           ),
-                          Text(
-                            "Восход солнца",
+                          const Text(
+                            "ВОСХОД И ЗАКАТ",
                             style: TextStyle(
                                 color: Colors.grey,
-                                fontSize: 18,
+                                fontSize: 15,
                                 fontWeight: FontWeight.bold),
                             textAlign: TextAlign.left,
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 10,
                           ),
-                          Sunny(),
-                          SizedBox(
+                          const Sunny(),
+                          const SizedBox(
                             height: 10,
                           ),
                         ],
@@ -123,6 +150,35 @@ class WeatherScreenState extends State<WeatherScreenMain> {
                             "Создано с поддержкой WeathFul.",
                             style: TextStyle(color: Colors.grey, fontSize: 14),
                           ),
+                          TextButton(
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  PageRouteBuilder(
+                                      transitionDuration:
+                                          const Duration(milliseconds: 200),
+                                      pageBuilder: (context, animation,
+                                              secondaryAnimation) =>
+                                          const WeatherScreenRules(),
+                                      transitionsBuilder: (context, animation,
+                                          secondaryAnimation, child) {
+                                        return FadeTransition(
+                                          opacity: animation,
+                                          child: child,
+                                        );
+                                      }),
+                                );
+                              },
+                              style: TextButton.styleFrom(
+                                  overlayColor: Colors.transparent),
+                              child: const Text(
+                                "Используя приложение,\n вы автоматические соглашаетесь с \nнашими правилами",
+                                style: TextStyle(
+                                    color: Colors.white70,
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.bold),
+                                textAlign: TextAlign.center,
+                              )),
                           TextButton(
                               style: const ButtonStyle(
                                   splashFactory: NoSplash.splashFactory),

@@ -312,6 +312,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "6.1.2"
+  raised_buttons:
+    dependency: "direct main"
+    description:
+      name: raised_buttons
+      sha256: de567adf35617c541b8648af3497f38aeafbb5575afaf71cde7d8603838e0170
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.2"
   rive:
     dependency: transitive
     description:

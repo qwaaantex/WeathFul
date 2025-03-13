@@ -5,16 +5,12 @@ import 'package:WeathFul/MainWidgets/Widgets/Drawer.dart';
 import 'package:WeathFul/Providers/CityProvider.dart';
 
 class TownScreenApp extends StatefulWidget {
-  final bool isChanged;
   final String cityName;
-  final int index;
   final PageController controller;
 
   const TownScreenApp({
     super.key,
     required this.cityName,
-    required this.isChanged,
-    required this.index,
     required this.controller,
   });
 
@@ -76,8 +72,6 @@ class TownsScreenAppState extends State<TownScreenApp> {
       key: scaffoldKey,
       endDrawer: const DrawerPage(),
       body: AppBarWeathFul(
-        isChanged: widget.isChanged,
-        index: widget.index,
         child: Stack(
           children: [
             Container(
