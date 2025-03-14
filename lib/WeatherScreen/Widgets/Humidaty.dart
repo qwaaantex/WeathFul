@@ -1,4 +1,5 @@
-import 'package:WeathFul/Providers/WeatherState.dart';
+import 'package:WeathFul/Providers/State/WeatherState.dart';
+
 import 'package:dashed_circular_progress_bar/dashed_circular_progress_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:rive_animated_icon/rive_animated_icon.dart';
@@ -17,6 +18,7 @@ class Humidaty extends StatefulWidget {
 class HumidatyState extends State<Humidaty> {
   final ValueNotifier<double> _valueNotifier = ValueNotifier(0);
   final Uri _url = Uri.parse('https://yandex.ru/pogoda/nowcast');
+
   final weatherService = WeatherService();
   Weather? humidation;
   bool isLoading = true;
@@ -165,7 +167,7 @@ class HumidatyState extends State<Humidaty> {
                       ]
                     : [
                         Text(
-                          'Влажность: ${humidation?.humidity?.round() ?? 0}%',
+                          'Влажность: ${humidation?.humidity?.round()}%',
                           style: const TextStyle(
                             color: Colors.white,
                             fontSize: 14,

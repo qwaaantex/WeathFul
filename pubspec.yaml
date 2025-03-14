@@ -29,6 +29,7 @@ dependencies:
   hugeicons: ^0.0.7
   dashed_circular_progress_bar: ^0.0.6
   url_launcher: ^6.3.1
+  modal_bottom_sheet: ^3.0.0
   
   rive_animated_icon: ^2.0.3
   raised_buttons: ^0.0.2

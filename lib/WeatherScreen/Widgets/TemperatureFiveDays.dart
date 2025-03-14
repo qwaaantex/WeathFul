@@ -57,9 +57,11 @@ class TemperaturefivedaysState extends State<TemperatureFiveDays> {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: MediaQuery.of(context).size.width * 0.94,
+    return Container(
+      width: MediaQuery.of(context).size.width * 0.92,
       height: 100,
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(14), color: Colors.grey.shade800),
       child: isLoading
           ? const Center(
               child: CircularProgressIndicator(
@@ -71,45 +73,49 @@ class TemperaturefivedaysState extends State<TemperatureFiveDays> {
                   'Нет данных',
                   style: TextStyle(color: Colors.grey, fontSize: 14),
                 ))
-              : Container(
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(14),
-                      color: Colors.grey.shade800),
-                  child: ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                    itemCount: forecast.length,
-                    itemExtent: 100,
-                    itemBuilder: (context, index) {
-                      final weather = forecast[index];
-                      return Stack(
-                        children: [
-                          Stack(
-                            clipBehavior: Clip.none,
-                            children: [
-                              if (weather.weatherIcon != null)
-                                Image.network(
-                                  'http://openweathermap.org/img/wn/${weather.weatherIcon}@2x.png',
-                                ),
-                              Align(
-                                  alignment: Alignment.topCenter,
-                                  child: Text(
-                                    "${weather.date?.hour}:00",
-                                    style: const TextStyle(
-                                        color: Colors.white, fontSize: 15),
-                                  )),
-                            ],
-                          ),
-                          Align(
-                              alignment: Alignment.bottomCenter,
-                              child: Text(
-                                "${weather.temperature?.celsius?.round()}°",
-                                style: const TextStyle(
-                                    color: Colors.white, fontSize: 15),
-                              )),
-                        ],
-                      );
-                    },
-                  )),
+              : ListView.builder(
+                  padding: const EdgeInsets.all(4),
+                  scrollDirection: Axis.horizontal,
+                  itemCount: forecast.length,
+                  itemExtent: 80,
+                  itemBuilder: (context, index) {
+                    final weather = forecast[index];
+                    return Stack(
+                      children: [
+                        Stack(
+                          clipBehavior: Clip.none,
+                          children: [
+                            Align(
+                                alignment: Alignment.center,
+                                child: weather.weatherIcon != null
+                                    ? Image.network(
+                                        'http://openweathermap.org/img/wn/${weather.weatherIcon}@2x.png',
+                                        scale: 2,
+                                      )
+                                    : Image.network(
+                                        'http://openweathermap.org/img/wn/${weather.weatherIcon}@2x.png',
+                                        scale: 2,
+                                      )),
+                            Align(
+                                alignment: Alignment.topCenter,
+                                child: Text(
+                                  "${weather.date?.hour}:00",
+                                  style: const TextStyle(
+                                      color: Colors.white, fontSize: 15),
+                                )),
+                          ],
+                        ),
+                        Align(
+                            alignment: Alignment.bottomCenter,
+                            child: Text(
+                              "${weather.temperature?.celsius?.round()}°",
+                              style: const TextStyle(
+                                  color: Colors.white, fontSize: 15),
+                            )),
+                      ],
+                    );
+                  },
+                ),
     );
   }
 }

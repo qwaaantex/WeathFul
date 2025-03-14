@@ -100,6 +100,9 @@ class WeatherScreenState extends State<WeatherScreenMain> {
                                     fontSize: 15,
                                   ),
                                 ),
+                                SizedBox(
+                                  width: 10,
+                                ),
                                 Icon(
                                   Icons.arrow_forward_ios,
                                   color: Colors.grey,
@@ -137,7 +140,9 @@ class WeatherScreenState extends State<WeatherScreenMain> {
                           const SizedBox(
                             height: 10,
                           ),
-                          const Sunny(),
+                          Sunny(
+                            cityName: cityName,
+                          ),
                           const SizedBox(
                             height: 10,
                           ),

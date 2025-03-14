@@ -1,5 +1,7 @@
 import 'package:WeathFul/MainWidgets/Widgets/Drawer.dart';
+import 'package:WeathFul/WeatherScreen/Widgets/Help.dart';
 import 'package:WeathFul/WeatherScreen/Widgets/Navigation.bar.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_appbar/components/appbar_behavior.dart';
@@ -47,7 +49,11 @@ class AppBarWeathFulState extends State<AppBarWeathFul> {
                             child: NavigationBarAppBar()),
                         IconButton(
                             onPressed: () {
-                              scaffoldKey.currentState?.openDrawer();
+                              showModalBottomSheet(
+                                  context: context,
+                                  barrierColor: Colors.black.withOpacity(0.5),
+                                  backgroundColor: Colors.grey[850],
+                                  builder: (context) => const Help());
                             },
                             icon: const Icon(
                               BoxIcons.bx_question_mark,
