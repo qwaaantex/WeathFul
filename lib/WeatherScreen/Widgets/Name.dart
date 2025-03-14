@@ -38,7 +38,8 @@ class NameState extends State<Name> {
       children: [
         Text(
           widget.nameCity,
-          style: const TextStyle(fontSize: 26, color: Colors.white),
+          style: const TextStyle(
+              fontSize: 26, color: Colors.white, fontWeight: FontWeight.bold),
         ),
       ],
     );

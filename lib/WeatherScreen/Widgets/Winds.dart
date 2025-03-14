@@ -1,11 +1,14 @@
+import 'package:WeathFul/Providers/WeatherState.dart';
 import 'package:dashed_circular_progress_bar/dashed_circular_progress_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:rive_animated_icon/rive_animated_icon.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:weather/weather.dart';
 
 class Winds extends StatefulWidget {
-  const Winds({super.key});
+  final String nameCity;
+  const Winds({super.key, required this.nameCity});
 
   @override
   State<StatefulWidget> createState() => WindsState();
@@ -14,6 +17,41 @@ class Winds extends StatefulWidget {
 class WindsState extends State<Winds> {
   final ValueNotifier<double> _valueNotifier = ValueNotifier(0);
   final Uri _url = Uri.parse('https://yandex.ru/pogoda/wind');
+  final weatherService = WeatherService();
+  Weather? windSpeed;
+  bool isLoading = true;
+
+  @override
+  void initState() {
+    super.initState();
+    _fetchWeatherData();
+  }
+
+  Future<void> _fetchWeatherData() async {
+    try {
+      setState(() {
+        isLoading = true;
+      });
+
+      await weatherService.initialize();
+      windSpeed = await weatherService.fetchWeatherByCityName(widget.nameCity);
+
+      if (mounted) {
+        setState(() {
+          _valueNotifier.value = windSpeed?.windSpeed?.toDouble() ?? 0;
+          isLoading = false;
+        });
+      }
+    } catch (e) {
+      if (mounted) {
+        setState(() {
+          isLoading = false;
+        });
+      }
+      print('Error fetching weather: $e');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -31,30 +69,34 @@ class WindsState extends State<Winds> {
                     children: [
                       SizedBox(
                           width: MediaQuery.of(context).size.width * 0.5,
-                          child: DashedCircularProgressBar.aspectRatio(
-                            aspectRatio: 1,
-                            valueNotifier: _valueNotifier,
-                            progress: 40,
-                            maxProgress: 150,
-                            corners: StrokeCap.butt,
-                            foregroundColor: Colors.lightGreenAccent,
-                            backgroundColor: const Color(0xffeeeeee),
-                            foregroundStrokeWidth: 15,
-                            backgroundStrokeWidth: 15,
-                            animation: true,
-                            child: Center(
-                              child: ValueListenableBuilder(
-                                valueListenable: _valueNotifier,
-                                builder: (_, double value, __) => Text(
-                                  '${value.toInt()} км/ч',
-                                  style: const TextStyle(
-                                      color: Colors.green,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 35),
-                                ),
-                              ),
-                            ),
-                          )),
+                          child: isLoading
+                              ? const CircularProgressIndicator(
+                                  color: Colors.grey,
+                                )
+                              : DashedCircularProgressBar.aspectRatio(
+                                  aspectRatio: 1,
+                                  valueNotifier: _valueNotifier,
+                                  progress: windSpeed?.windSpeed ?? 0,
+                                  maxProgress: 150,
+                                  corners: StrokeCap.butt,
+                                  foregroundColor: Colors.lightGreenAccent,
+                                  backgroundColor: const Color(0xffeeeeee),
+                                  foregroundStrokeWidth: 15,
+                                  backgroundStrokeWidth: 15,
+                                  animation: true,
+                                  child: Center(
+                                    child: ValueListenableBuilder(
+                                      valueListenable: _valueNotifier,
+                                      builder: (_, double value, __) => Text(
+                                        '${value.toInt()} км/ч',
+                                        style: const TextStyle(
+                                            color: Colors.green,
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 35),
+                                      ),
+                                    ),
+                                  ),
+                                )),
                       Column(children: [
                         RiveAnimatedIcon(
                             riveIcon: RiveIcon.cursor,
@@ -83,19 +125,36 @@ class WindsState extends State<Winds> {
               const SizedBox(
                 height: 20,
               ),
-              const Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      'Скорость: 10%',
-                      style: TextStyle(color: Colors.white, fontSize: 14),
-                    ),
-                    Text(
-                      'Ощущается: 5°',
-                      style: TextStyle(color: Colors.white, fontSize: 14),
-                    ),
-                  ])
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: isLoading
+                    ? [const CircularProgressIndicator(color: Colors.grey)]
+                    : windSpeed == null
+                        ? [
+                            const Center(
+                              child: Text(
+                                "Нет данных",
+                                style: TextStyle(
+                                  color: Colors.grey,
+                                  fontSize: 14,
+                                ),
+                              ),
+                            )
+                          ]
+                        : [
+                            Text(
+                              'Скорость: ${windSpeed?.windSpeed?.round() ?? 0} км/ч',
+                              style: const TextStyle(
+                                  color: Colors.white, fontSize: 14),
+                            ),
+                            Text(
+                              'Давление: ${windSpeed?.pressure?.round() ?? 0} мм.рт.ст',
+                              style: const TextStyle(
+                                  color: Colors.white, fontSize: 14),
+                            ),
+                          ],
+              )
             ]));
   }
 }

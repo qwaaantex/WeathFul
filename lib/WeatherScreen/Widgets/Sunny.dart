@@ -79,11 +79,11 @@ class SunnyState extends State<Sunny> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  'Влажность: 10%',
+                  'Восход: ??°',
                   style: TextStyle(color: Colors.white, fontSize: 14),
                 ),
                 Text(
-                  'Ощущается: 5°',
+                  'Закат: ??ч',
                   style: TextStyle(color: Colors.white, fontSize: 14),
                 ),
               ])

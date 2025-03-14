@@ -156,9 +156,9 @@ class TownsScreenAppState extends State<TownScreenApp> {
                                   title: Text(
                                     Towns[index],
                                     style: const TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 17,
-                                    ),
+                                        color: Colors.white,
+                                        fontSize: 17,
+                                        fontWeight: FontWeight.bold),
                                   ),
                                 ),
                               ),

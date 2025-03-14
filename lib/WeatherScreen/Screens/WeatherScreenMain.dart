@@ -120,7 +120,9 @@ class WeatherScreenState extends State<WeatherScreenMain> {
                           const SizedBox(
                             height: 10,
                           ),
-                          const Winds(),
+                          Winds(
+                            nameCity: cityName,
+                          ),
                           const SizedBox(
                             height: 10,
                           ),
@@ -148,7 +150,7 @@ class WeatherScreenState extends State<WeatherScreenMain> {
                         children: [
                           const Text(
                             "Создано с поддержкой WeathFul.",
-                            style: TextStyle(color: Colors.grey, fontSize: 14),
+                            style: TextStyle(color: Colors.grey, fontSize: 13),
                           ),
                           TextButton(
                               onPressed: () {

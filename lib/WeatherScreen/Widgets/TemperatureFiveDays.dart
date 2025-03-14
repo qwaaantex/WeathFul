@@ -57,7 +57,7 @@ class TemperaturefivedaysState extends State<TemperatureFiveDays> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: MediaQuery.of(context).size.width * 0.94,
       height: 100,
       child: isLoading
